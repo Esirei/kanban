@@ -23,9 +23,12 @@
           </div>
         </div>
 
-        <div class="flex-1 overflow-hidden">
-          <div class="inline-flex h-full items-start px-4 pb-4">
-            <div class="flex max-h-full w-72 flex-col overflow-hidden rounded-md bg-gray-200">
+        <div class="flex-1 overflow-x-auto">
+          <div class="inline-flex h-full items-start space-x-4 px-4 pb-4">
+            <div
+              v-for="b in Array.from({ length: 5 })"
+              :key="b"
+              class="flex max-h-full w-72 flex-col overflow-hidden rounded-md bg-gray-200">
               <div class="flex items-center justify-between px-3 py-2">
                 <h3 class="text-sm font-semibold text-gray-700">Backlog</h3>
                 <button class="grid h-8 w-8 place-content-center rounded-md hover:bg-gray-300">
@@ -57,6 +60,14 @@
                   </button>
                 </div>
               </div>
+            </div>
+
+            <div class="w-72">
+              <button
+                class="flex w-full items-center rounded-md bg-white/10 p-2 text-sm font-medium text-white hover:bg-white/20">
+                <PlusIcon class="mt-1 h-5 w-5" />
+                Add another list
+              </button>
             </div>
           </div>
         </div>
