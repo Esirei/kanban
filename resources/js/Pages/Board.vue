@@ -2,11 +2,42 @@
   <div class="flex h-screen flex-col bg-purple-400">
     <header class="flex shrink-0 justify-between bg-white px-4 py-3">
       <a href="/" class="text-2xl font-black tracking-tight">kanboard</a>
-      <nav>
+      <nav class="flex items-center">
         <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100">My boards</a>
-        <button class="ml-3">
-          <img :src="avatar" alt="me" class="inline h-9 w-9 rounded-full" />
-        </button>
+        <Menu as="div" class="relative z-10 ml-3">
+          <MenuButton
+            class="rounded-full focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2">
+            <img :src="avatar" alt="me" class="inline h-9 w-9 rounded-full" />
+          </MenuButton>
+
+          <transition
+            enter-active-class="transition transform duration-100 ease-out"
+            enter-from-class="opacity-0 scale-90"
+            enter-to-class="opacity-100 scale-100"
+            leave-active-class="transition transform duration-100 ease-in"
+            leave-from-class="opacity-100 scale-100"
+            leave-to-class="opacity-0 scale-90">
+            <MenuItems
+              class="absolute right-0 mt-2 w-48 origin-top-right overflow-hidden rounded-md border bg-white shadow-lg focus:outline-none">
+              <MenuItem v-slot="{ active }">
+                <a
+                  href="#"
+                  :class="{ 'bg-gray-100': active }"
+                  class="block px-4 py-2 text-sm text-gray-700">
+                  My Profile
+                </a>
+              </MenuItem>
+              <MenuItem v-slot="{ active }">
+                <a
+                  href="#"
+                  :class="{ 'bg-gray-100': active }"
+                  class="block px-4 py-2 text-sm text-gray-700">
+                  Log out
+                </a>
+              </MenuItem>
+            </MenuItems>
+          </transition>
+        </Menu>
       </nav>
     </header>
 
@@ -29,12 +60,43 @@
             <div
               v-for="b in Array.from({ length: 5 })"
               :key="b"
-              class="flex max-h-full w-72 flex-col overflow-hidden rounded-md bg-gray-200">
+              class="flex max-h-full w-72 flex-col rounded-md bg-gray-200">
               <div class="flex items-center justify-between px-3 py-2">
                 <h3 class="text-sm font-semibold text-gray-700">Backlog</h3>
-                <button class="grid h-8 w-8 place-content-center rounded-md hover:bg-gray-300">
-                  <DotsHorizontalIcon class="h-5 w-5" />
-                </button>
+                <Menu as="div" class="relative z-10">
+                  <MenuButton
+                    class="grid h-8 w-8 place-content-center rounded-md hover:bg-gray-300">
+                    <DotsHorizontalIcon class="h-5 w-5" />
+                  </MenuButton>
+
+                  <transition
+                    enter-active-class="transition transform duration-100 ease-out"
+                    enter-from-class="opacity-0 scale-90"
+                    enter-to-class="opacity-100 scale-100"
+                    leave-active-class="transition transform duration-100 ease-in"
+                    leave-from-class="opacity-100 scale-100"
+                    leave-to-class="opacity-0 scale-90">
+                    <MenuItems
+                      class="absolute left-0 mt-2 w-40 origin-top-left overflow-hidden rounded-md border bg-white shadow-lg focus:outline-none">
+                      <MenuItem v-slot="{ active }">
+                        <a
+                          href="#"
+                          :class="{ 'bg-gray-100': active }"
+                          class="block px-4 py-2 text-sm text-gray-700">
+                          Add Card
+                        </a>
+                      </MenuItem>
+                      <MenuItem v-slot="{ active }">
+                        <a
+                          href="#"
+                          :class="{ 'bg-gray-100': active }"
+                          class="block px-4 py-2 text-sm text-red-600">
+                          Delete List
+                        </a>
+                      </MenuItem>
+                    </MenuItems>
+                  </transition>
+                </Menu>
               </div>
 
               <div class="flex flex-col overflow-hidden pb-3">
@@ -46,7 +108,7 @@
                       class="group relative rounded-md border-b border-gray-300 bg-white p-3 shadow hover:bg-gray-50">
                       <a href="#" class="text-sm">card item</a>
                       <button
-                        class="absolute top-1 right-1 hidden h-8 w-8 place-content-center rounded-md bg-gray-50 text-gray-600 group-hover:grid hover:bg-gray-200 hover:text-black">
+                        class="absolute top-1 right-1 hidden h-8 w-8 place-content-center rounded-md bg-gray-50 text-gray-600 hover:bg-gray-200 hover:text-black group-hover:grid">
                         <PencilIcon class="h-5 w-5" />
                       </button>
                     </li>
@@ -79,6 +141,7 @@
 
 <script setup>
 import avatar from '~images/avatar.jpg';
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { DotsHorizontalIcon, PencilIcon, PlusIcon } from '@heroicons/vue/solid';
 </script>
 
