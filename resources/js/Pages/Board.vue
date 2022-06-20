@@ -36,8 +36,8 @@
                 </button>
               </div>
 
-              <div class="flex flex-col overflow-hidden px-3 pb-3">
-                <div class="flex-1 overflow-auto">
+              <div class="flex flex-col overflow-hidden pb-3">
+                <div class="flex-1 overflow-auto px-3">
                   <ul class="space-y-3">
                     <li
                       v-for="i in Array.from({ length: 20 })"
@@ -52,7 +52,7 @@
                   </ul>
                 </div>
 
-                <div class="mt-3">
+                <div class="mt-3 px-3">
                   <button
                     class="flex w-full items-center rounded-md p-2 text-sm font-medium text-gray-600 hover:bg-gray-300 hover:text-black">
                     <PlusIcon class="mr-1 h-5 w-5" />
