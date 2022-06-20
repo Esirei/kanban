@@ -23,7 +23,7 @@
           </div>
         </div>
 
-        <div class="flex-1 overflow-x-auto">
+        <div class="flex-1 overflow-x-auto [&::-webkit-scrollbar-thumb]:border-purple-400">
           <div class="inline-flex h-full items-start space-x-4 px-4 pb-4">
             <div
               v-for="b in Array.from({ length: 5 })"
@@ -37,7 +37,7 @@
               </div>
 
               <div class="flex flex-col overflow-hidden pb-3">
-                <div class="flex-1 overflow-auto px-3">
+                <div class="flex-1 overflow-auto px-3 [&::-webkit-scrollbar-thumb]:border-gray-200">
                   <ul class="space-y-3">
                     <li
                       v-for="i in Array.from({ length: 20 })"
