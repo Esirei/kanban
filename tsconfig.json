@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "esnext",
+        "moduleResolution": "node",
+        "strict": true,
+        "jsx": "preserve",
+        "sourceMap": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "allowJs": true,
+        "lib": [
+            "esnext",
+            "dom"
+        ],
+        "types": [
+            "vite/client"
+        ],
+        "baseUrl": ".",
+        "paths": {
+            "~/*": [
+                "resources/js/*"
+            ],
+            "@/*": [
+                "resources/js/*"
+            ],
+            "~images/*": [
+                "resources/images/*"
+            ]
+        }
+    },
+    "include": [
+        "resources/**/*",
+        "vite.config.ts"
+    ]
+}
