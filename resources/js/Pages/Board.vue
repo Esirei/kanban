@@ -23,7 +23,8 @@
           </div>
         </div>
 
-        <div class="flex-1 overflow-x-auto [&::-webkit-scrollbar-thumb]:border-purple-400">
+        <div
+          class="flex-1 overflow-x-auto scrollbar-thumb-white/50 scrollbar-thumb-hover-white scrollbar-border-purple-400">
           <div class="inline-flex h-full items-start space-x-4 px-4 pb-4">
             <div
               v-for="b in Array.from({ length: 5 })"
@@ -37,7 +38,7 @@
               </div>
 
               <div class="flex flex-col overflow-hidden pb-3">
-                <div class="flex-1 overflow-auto px-3 [&::-webkit-scrollbar-thumb]:border-gray-200">
+                <div class="flex-1 overflow-auto px-3 scrollbar-border-gray-200">
                   <ul class="space-y-3">
                     <li
                       v-for="i in Array.from({ length: 20 })"
@@ -45,7 +46,7 @@
                       class="group relative rounded-md border-b border-gray-300 bg-white p-3 shadow hover:bg-gray-50">
                       <a href="#" class="text-sm">card item</a>
                       <button
-                        class="absolute top-1 right-1 hidden h-8 w-8 place-content-center rounded-md bg-gray-50 text-gray-600 hover:bg-gray-200 hover:text-black group-hover:grid">
+                        class="absolute top-1 right-1 hidden h-8 w-8 place-content-center rounded-md bg-gray-50 text-gray-600 group-hover:grid hover:bg-gray-200 hover:text-black">
                         <PencilIcon class="h-5 w-5" />
                       </button>
                     </li>

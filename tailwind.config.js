@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
+const { default: flattenColorPalette } = require('tailwindcss/lib/util/flattenColorPalette');
 
 module.exports = {
   content: [
@@ -19,16 +20,13 @@ module.exports = {
 
   plugins: [
     require('@tailwindcss/forms'),
-    ({ addBase, theme }) => {
+    ({ addBase, theme, matchUtilities }) => {
       addBase({
-        ':root': {
+        '*': {
           '--scrollbar-thumb-color': theme('scrollbar.thumb-color', 'lightgray'),
           '--scrollbar-track-color': theme('scrollbar.track-color', 'transparent'),
           '--scrollbar-border-color': theme('scrollbar.border-color', '#FFF'),
-          '--scrollbar-thumb-color-hover': theme('scrollbar.thumb-color-hover', 'gray'),
-        },
 
-        '*': {
           scrollbarWidth: theme('scrollbar.moz-width', 'thin'),
           scrollbarColor: 'var(--scrollbar-thumb-color) var(--scrollbar-track-color)',
         },
@@ -43,7 +41,7 @@ module.exports = {
           borderRadius: theme('scrollbar.radius', '12px'),
           border: '3px solid var(--scrollbar-border-color)',
           '&:hover': {
-            backgroundColor: 'var(--scrollbar-thumb-color-hover)',
+            backgroundColor: theme('scrollbar.thumb-color-hover', 'gray'),
           },
         },
 
@@ -51,6 +49,34 @@ module.exports = {
           background: 'var(--scrollbar-track-color)',
         },
       });
+
+      const colors = flattenColorPalette(theme('colors'));
+
+      matchUtilities(
+        { 'scrollbar-thumb': value => ({ '--scrollbar-thumb-color': value }) },
+        { values: colors, type: 'color' },
+      );
+
+      matchUtilities(
+        {
+          'scrollbar-thumb-hover': value => ({
+            '&::-webkit-scrollbar-thumb:hover': {
+              backgroundColor: value,
+            },
+          }),
+        },
+        { values: colors, type: 'color' },
+      );
+
+      matchUtilities(
+        { 'scrollbar-border': value => ({ '--scrollbar-border-color': value }) },
+        { values: colors, type: 'color' },
+      );
+
+      matchUtilities(
+        { 'scrollbar-track': value => ({ '--scrollbar-track-color': value }) },
+        { values: colors, type: 'color' },
+      );
     },
   ],
 };
