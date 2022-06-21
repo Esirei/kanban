@@ -1,7 +1,7 @@
 <template>
   <div class="flex h-screen flex-col">
-    <nav class="flex shrink-0 justify-between bg-white px-4 py-3">
-      <a :href="route('dashboard')" class="text-2xl font-black tracking-tight">kanboard</a>
+    <nav class="flex shrink-0 justify-between border-b bg-white px-4 py-3">
+      <a :href="route('boards')" class="text-2xl font-black tracking-tight">kanboard</a>
       <div class="flex items-center">
         <NavLink href="#">My boards</NavLink>
         <Menu as="div" class="relative z-10 ml-3">

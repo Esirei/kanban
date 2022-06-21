@@ -24,9 +24,9 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/boards', function () {
+    return Inertia::render('Boards');
+})->middleware(['auth', 'verified'])->name('boards');
 
 Route::get('board', fn() => inertia('Board'))
     ->middleware('auth')
