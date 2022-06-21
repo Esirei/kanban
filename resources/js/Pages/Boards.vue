@@ -25,6 +25,7 @@
             leave-to-class="translate-y-1 opacity-0">
             <PopoverPanel
               v-slot="{ close }"
+              focus
               class="absolute left-1/2 z-10 mt-3 w-72 -translate-x-1/2 px-4 sm:px-0">
               <div class="overflow-hidden rounded-lg bg-white p-3 shadow-lg ring-1 ring-black/5">
                 <form @submit.prevent="createBoard(close)">
