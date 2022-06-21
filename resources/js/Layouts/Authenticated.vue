@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="min-h-screen bg-gray-100">
+    <div class="flex h-screen flex-col bg-purple-400">
       <nav class="flex shrink-0 justify-between bg-white px-4 py-3">
         <a :href="route('dashboard')" class="text-2xl font-black tracking-tight">kanboard</a>
         <div class="flex items-center">
@@ -8,7 +8,10 @@
           <Menu as="div" class="relative z-10 ml-3">
             <MenuButton
               class="rounded-full focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2">
-              <img :src="avatar" alt="me" class="inline h-9 w-9 rounded-full" />
+              <img
+                :src="$page.props.auth.user.avatarUrl"
+                :alt="$page.props.auth.user.name"
+                class="inline h-9 w-9 rounded-full" />
             </MenuButton>
 
             <transition
@@ -44,15 +47,8 @@
         </div>
       </nav>
 
-      <!-- Page Heading -->
-      <header v-if="$slots.header" class="bg-white shadow">
-        <div class="mx-auto max-w-7xl py-6 px-4 sm:px-6 lg:px-8">
-          <slot name="header" />
-        </div>
-      </header>
-
       <!-- Page Content -->
-      <main>
+      <main class="flex-1 overflow-hidden">
         <slot />
       </main>
     </div>
@@ -62,5 +58,4 @@
 <script setup>
 import NavLink from '@/Components/NavLink.vue';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
-import avatar from '~images/avatar.jpg';
 </script>
