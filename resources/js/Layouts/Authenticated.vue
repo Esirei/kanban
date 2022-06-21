@@ -1,5 +1,5 @@
 <template>
-  <div class="flex h-screen flex-col bg-purple-400">
+  <div class="flex h-screen flex-col">
     <nav class="flex shrink-0 justify-between bg-white px-4 py-3">
       <a :href="route('dashboard')" class="text-2xl font-black tracking-tight">kanboard</a>
       <div class="flex items-center">

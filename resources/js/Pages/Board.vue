@@ -1,5 +1,5 @@
 <template layout="Authenticated">
-  <div class="flex h-full flex-col">
+  <div class="flex h-full flex-col bg-purple-400">
     <div class="flex shrink-0 items-center justify-between p-4">
       <h1 class="text-2xl font-bold text-white">Board title</h1>
       <div>
