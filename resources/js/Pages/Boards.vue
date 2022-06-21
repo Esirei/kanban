@@ -1,7 +1,7 @@
 <template layout="Authenticated">
   <InertiaHead title="Boards" />
 
-  <div class="h-full bg-gray-50 px-4 py-6">
+  <div class="h-full overflow-y-auto bg-gray-50 px-4 py-6">
     <div class="mx-auto max-w-5xl">
       <div class="mb-4 flex items-center px-3">
         <h3 class="font-black text-gray-700">My boards</h3>
