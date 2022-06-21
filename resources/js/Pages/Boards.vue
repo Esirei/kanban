@@ -23,9 +23,11 @@
             leave-active-class="transition duration-150 ease-in"
             leave-from-class="translate-y-0 opacity-100"
             leave-to-class="translate-y-1 opacity-0">
-            <PopoverPanel class="absolute left-1/2 z-10 mt-3 w-72 -translate-x-1/2 px-4 sm:px-0">
+            <PopoverPanel
+              v-slot="{ close }"
+              class="absolute left-1/2 z-10 mt-3 w-72 -translate-x-1/2 px-4 sm:px-0">
               <div class="overflow-hidden rounded-lg bg-white p-3 shadow-lg ring-1 ring-black/5">
-                <form @submit.prevent="createBoard">
+                <form @submit.prevent="createBoard(close)">
                   <label for="name" class="mb-1 block text-sm font-medium text-gray-600">
                     Your new board:
                   </label>
@@ -81,9 +83,12 @@ defineProps<{ boards: Board[] }>();
 
 const form = useForm({ name: '' });
 
-const createBoard = () => {
+const createBoard = (close: () => void) => {
   form.post(route('boards.store'), {
-    onSuccess: () => form.reset(),
+    onSuccess: () => {
+      close();
+      form.reset();
+    },
   });
 };
 </script>
