@@ -20,6 +20,13 @@ class BoardController extends Controller
 
     public function store(Request $request)
     {
+        $data = $request->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        $request->user()->boards()->create($data);
+
+        return back();
     }
 
     public function show(Board $board)
