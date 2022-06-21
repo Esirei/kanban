@@ -1,46 +1,5 @@
-<template>
+<template layout="Authenticated">
   <div class="flex h-screen flex-col bg-purple-400">
-    <header class="flex shrink-0 justify-between bg-white px-4 py-3">
-      <a href="/" class="text-2xl font-black tracking-tight">kanboard</a>
-      <nav class="flex items-center">
-        <a href="#" class="rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100">My boards</a>
-        <Menu as="div" class="relative z-10 ml-3">
-          <MenuButton
-            class="rounded-full focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2">
-            <img :src="avatar" alt="me" class="inline h-9 w-9 rounded-full" />
-          </MenuButton>
-
-          <transition
-            enter-active-class="transition transform duration-100 ease-out"
-            enter-from-class="opacity-0 scale-90"
-            enter-to-class="opacity-100 scale-100"
-            leave-active-class="transition transform duration-100 ease-in"
-            leave-from-class="opacity-100 scale-100"
-            leave-to-class="opacity-0 scale-90">
-            <MenuItems
-              class="absolute right-0 mt-2 w-48 origin-top-right overflow-hidden rounded-md border bg-white shadow-lg focus:outline-none">
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="#"
-                  :class="{ 'bg-gray-100': active }"
-                  class="block px-4 py-2 text-sm text-gray-700">
-                  My Profile
-                </a>
-              </MenuItem>
-              <MenuItem v-slot="{ active }">
-                <a
-                  href="#"
-                  :class="{ 'bg-gray-100': active }"
-                  class="block px-4 py-2 text-sm text-gray-700">
-                  Log out
-                </a>
-              </MenuItem>
-            </MenuItems>
-          </transition>
-        </Menu>
-      </nav>
-    </header>
-
     <main class="flex-1 overflow-hidden">
       <div class="flex h-full flex-col">
         <div class="flex shrink-0 items-center justify-between p-4">
@@ -140,15 +99,8 @@
 </template>
 
 <script setup>
-import avatar from '~images/avatar.jpg';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { DotsHorizontalIcon, PencilIcon, PlusIcon } from '@heroicons/vue/solid';
-</script>
-
-<script>
-export default {
-  name: 'Board',
-};
 </script>
 
 <style scoped></style>
