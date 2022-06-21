@@ -1,17 +1,19 @@
 <template>
-  <InertiaLink :href="href" :class="classes">
+  <InertiaLink
+    :href="href"
+    class="rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100"
+    :class="{ 'bg-gray-100': active }">
     <slot />
   </InertiaLink>
 </template>
 
-<script lang="ts">
-const sameClasses = 'rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-100';
-</script>
-
 <script setup lang="ts">
-import { computed } from 'vue';
+import { InertiaLinkProps } from '@inertiajs/inertia-vue3';
 
-const props = defineProps<{ href: string; active: boolean }>();
-
-const classes = computed(() => (props.active ? `${sameClasses} bg-gray-100` : sameClasses));
+interface Props extends InertiaLinkProps {
+  active: boolean;
+}
+withDefaults(defineProps<Props>(), {
+  active: false,
+});
 </script>
