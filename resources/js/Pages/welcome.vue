@@ -6,7 +6,7 @@
     <div v-if="canLogin" class="fixed top-0 right-0 hidden py-4 px-6 sm:block">
       <InertiaLink
         v-if="$page.props.auth.user"
-        :href="route('boards')"
+        :href="route('boards.index')"
         class="text-sm text-gray-700 underline">
         Boards
       </InertiaLink>

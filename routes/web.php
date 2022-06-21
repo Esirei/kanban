@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BoardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -24,12 +25,8 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/boards', function () {
-    return Inertia::render('Boards');
-})->middleware(['auth', 'verified'])->name('boards');
-
-Route::get('board', fn() => inertia('Board'))
-    ->middleware('auth')
-    ->name('board');
+Route::resource('boards', BoardController::class)
+    ->only('index', 'show')
+    ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

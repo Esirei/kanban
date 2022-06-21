@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return Attribute::get(fn() => 'https://gravatar.com/avatar/' . md5(mb_strtolower($this->email)) . '?s=100&r=x');
     }
+
+    public function boards()
+    {
+        return $this->hasMany(Board::class);
+    }
 }
