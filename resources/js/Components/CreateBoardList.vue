@@ -15,7 +15,8 @@
       v-model="form.name"
       type="text"
       placeholder="Enter list name..."
-      class="block w-full rounded-md border-gray-300 text-sm shadow-sm focus:border-purple-400 focus:ring-purple-400" />
+      class="block w-full rounded-md border-gray-300 text-sm shadow-sm focus:border-purple-400 focus:ring-purple-400"
+      @keydown.esc="closeForm" />
     <InputError class="mt-1" :message="form.errors.name" />
     <div class="mt-2 space-x-2">
       <button

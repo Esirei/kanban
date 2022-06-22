@@ -7,14 +7,19 @@
     Add card
   </button>
 
-  <form v-if="isShowingForm" class="rounded-md" @submit.prevent="submitForm">
+  <form
+    v-if="isShowingForm"
+    class="rounded-md"
+    @keydown.esc="closeForm"
+    @submit.prevent="submitForm">
     <textarea
       ref="input"
       v-model="form.title"
       rows="3"
       type="text"
       placeholder="Enter card title..."
-      class="block w-full rounded-md border-gray-300 text-sm shadow-sm focus:border-purple-400 focus:ring-purple-400" />
+      class="block w-full rounded-md border-gray-300 text-sm shadow-sm focus:border-purple-400 focus:ring-purple-400"
+      @keydown.enter.exact.prevent="submitForm" />
     <InputError class="mt-1" :message="form.errors.title" />
     <div class="mt-2 space-x-2">
       <button
@@ -44,6 +49,7 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+const emit = defineEmits<{ (e: 'created'): void }>();
 
 const isShowingForm = ref(false);
 const input = ref<HTMLInputElement>();
@@ -67,6 +73,7 @@ const submitForm = () => {
       form.reset();
       input.value?.scrollIntoView({ behavior: 'smooth', inline: 'start' });
       input.value?.focus();
+      emit('created');
     },
   });
 };
