@@ -54,11 +54,7 @@
       </div>
 
       <div class="mt-3 px-3">
-        <button
-          class="flex w-full items-center rounded-md p-2 text-sm font-medium text-gray-600 hover:bg-gray-300 hover:text-black">
-          <PlusIcon class="mr-1 h-5 w-5" />
-          Add card
-        </button>
+        <CreateCard :list="list" />
       </div>
     </div>
   </div>
@@ -66,12 +62,13 @@
 
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
-import { DotsHorizontalIcon, PencilIcon, PlusIcon } from '@heroicons/vue/solid';
+import { DotsHorizontalIcon, PencilIcon } from '@heroicons/vue/solid';
+import CreateCard from './CreateCard.vue';
 import { List } from '~/types/models/board';
 
 interface Props {
   list: List;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 </script>

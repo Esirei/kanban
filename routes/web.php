@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\BoardListController;
+use App\Http\Controllers\CardController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -31,6 +32,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->except('destroy', 'create', 'edit');
 
     Route::apiResource('boards.lists', BoardListController::class)
+        ->except('index', 'show')
+        ->shallow();
+
+    Route::apiResource('lists.cards', CardController::class)
         ->except('index', 'show')
         ->shallow();
 });
