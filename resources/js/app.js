@@ -1,6 +1,7 @@
-import { createApp, h, onMounted } from 'vue';
 import { createInertiaApp, Head, Link } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
+import { createPinia } from 'pinia';
+import { createApp, h, onMounted } from 'vue';
 import { resolvePageComponent } from '~/vite/resolvePageComponent';
 import './bootstrap';
 
@@ -16,6 +17,7 @@ void createInertiaApp({
       render: () => h(app, props),
     })
       .use(plugin)
+      .use(createPinia())
       .mixin({ methods: { route } })
       .component('InertiaHead', Head)
       .component('InertiaLink', Link)

@@ -39,8 +39,9 @@
 
 <script setup lang="ts">
 import { useForm } from '@inertiajs/inertia-vue3';
-import { nextTick, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import InputError from '~/Components/InputError.vue';
+import { useCreatingCardStore } from '~/stores/card';
 import { List } from '~/types/models/board';
 import { PlusIcon } from '@heroicons/vue/solid';
 
@@ -50,18 +51,19 @@ interface Props {
 
 const props = defineProps<Props>();
 const emit = defineEmits<{ (e: 'created'): void }>();
+const store = useCreatingCardStore();
 
-const isShowingForm = ref(false);
+const isShowingForm = computed(() => props.list.id === store.listId);
 const input = ref<HTMLInputElement>();
 
 const showForm = async () => {
-  isShowingForm.value = true;
+  store.edit(props.list.id);
   await nextTick();
   input.value?.focus();
 };
 
 const closeForm = () => {
-  isShowingForm.value = false;
+  store.close();
   form.reset().clearErrors();
 };
 

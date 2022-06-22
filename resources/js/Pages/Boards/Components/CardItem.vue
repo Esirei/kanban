@@ -45,8 +45,9 @@
 <script setup lang="ts">
 import { PencilIcon } from '@heroicons/vue/solid';
 import { useForm } from '@inertiajs/inertia-vue3';
-import { nextTick, ref } from 'vue';
+import { computed, nextTick, ref } from 'vue';
 import InputError from '~/Components/InputError.vue';
+import { useEditingCardStore } from '~/stores/card';
 import { Card } from '~/types/models/board';
 
 interface Props {
@@ -55,26 +56,29 @@ interface Props {
 
 const props = defineProps<Props>();
 
-const isShowingForm = ref(false);
+const store = useEditingCardStore();
+
+const isShowingForm = computed(() => store.cardId === props.card.id);
+
 const titleRef = ref<HTMLInputElement>();
 const formRef = ref<HTMLFormElement>();
 
 const showForm = async () => {
-  isShowingForm.value = true;
+  store.edit(props.card.id);
   await nextTick();
   titleRef.value?.select();
   formRef.value?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 };
 
 const closeForm = () => {
-  isShowingForm.value = false;
+  store.close();
   form.reset().clearErrors();
 };
 
 const form = useForm({ title: props.card.title });
 
 const submitForm = () => {
-  isShowingForm.value = false;
+  store.close();
   if (!form.title) return form.reset('title');
   if (!form.isDirty) return;
   form.patch(route('cards.update', props.card), {
