@@ -1,9 +1,8 @@
 <template>
-  <div class="flex max-w-full flex-col items-start">
+  <div class="relative flex max-w-full flex-col items-start">
     <h1
-      ref="heading"
-      :class="{ 'absolute -left-[1000rem]': isEditing }"
-      class="pre-wrap cursor-pointer break-all rounded-md border border-transparent px-3 py-1.5 text-2xl font-bold text-white hover:bg-white/20"
+      :class="{ invisible: isEditing }"
+      class="w-full cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap rounded-md border border-transparent px-3 py-1.5 text-2xl font-bold text-white hover:bg-white/20"
       @click="edit">
       {{ form.name || ' ' }}
     </h1>
@@ -13,35 +12,36 @@
         v-model="form.name"
         type="text"
         placeholder="Board name"
-        class="max-w-full rounded-md px-3 py-1.5 text-2xl font-bold placeholder:text-gray-400 focus:ring-2 focus:ring-purple-900" />
+        class="absolute inset-0 max-w-full rounded-md px-3 py-1.5 text-2xl font-bold placeholder:text-gray-400 focus:ring-2 focus:ring-purple-900" />
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
 import { useForm } from '@inertiajs/inertia-vue3';
-import { nextTick, ref, watch } from 'vue';
+import { nextTick, ref } from 'vue';
 import { Board } from '~/types/models/board';
 
 const props = defineProps<{ board: Board }>();
 
 const form = useForm({ name: props.board.name });
 
-const heading = ref<HTMLHeadingElement>();
+// const heading = ref<HTMLHeadingElement>();
 const input = ref<HTMLInputElement>();
 const isEditing = ref(false);
 
-const syncWidths = async () => {
-  if (!input.value || !heading.value) return;
-  await nextTick();
-  input.value.style.width = `${heading.value.offsetWidth + 1}px`;
-};
+// const syncWidths = async () => {
+//   if (!input.value || !heading.value) return;
+//   await nextTick();
+//   input.value.style.width = `${heading.value.offsetWidth + 1}px`;
+// };
 
-watch(() => form.name, syncWidths);
+// watch(() => form.name, syncWidths);
 
 const edit = async () => {
   isEditing.value = true;
-  await syncWidths();
+  // await syncWidths();
+  await nextTick();
   input.value?.select();
 };
 
