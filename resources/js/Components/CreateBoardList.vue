@@ -20,12 +20,12 @@
     <div class="mt-2 space-x-2">
       <button
         type="submit"
-        class="rounded-md bg-rose-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">
+        class="rounded-md bg-rose-600 py-2 px-4 text-sm font-medium text-white shadow-sm ring-offset-gray-200 hover:bg-rose-500 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-offset-2">
         Add list
       </button>
       <button
         type="button"
-        class="rounded-md py-2 px-4 text-sm font-medium text-gray-700 hover:text-black focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2"
+        class="rounded-md py-2 px-4 text-sm font-medium text-gray-700 ring-offset-gray-200 hover:text-black focus:outline-none focus:ring-2 focus:ring-gray-700 focus:ring-offset-2"
         @click="closeForm">
         Cancel
       </button>
