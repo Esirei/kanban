@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BoardController;
+use App\Http\Controllers\BoardListController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -25,8 +26,13 @@ Route::get('/', function () {
     ]);
 });
 
-Route::resource('boards', BoardController::class)
-    ->except('destroy', 'create', 'edit')
-    ->middleware(['auth', 'verified']);
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::resource('boards', BoardController::class)
+        ->except('destroy', 'create', 'edit');
+
+    Route::apiResource('boards.lists', BoardListController::class)
+        ->except('index', 'show')
+        ->shallow();
+});
 
 require __DIR__.'/auth.php';

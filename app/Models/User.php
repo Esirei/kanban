@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Board::class);
     }
+
+    public function boardLists()
+    {
+        return $this->hasManyThrough(BoardList::class, Board::class);
+    }
 }

@@ -15,11 +15,11 @@
       class="flex-1 overflow-x-auto scrollbar-thumb-white/50 scrollbar-thumb-hover-white scrollbar-border-purple-400">
       <div class="inline-flex h-full items-start space-x-4 px-4 pb-4">
         <div
-          v-for="b in Array.from({ length: 5 })"
-          :key="b"
+          v-for="list in board.lists"
+          :key="list.id"
           class="flex max-h-full w-72 flex-col rounded-md bg-gray-200">
           <div class="flex items-center justify-between px-3 py-2">
-            <h3 class="text-sm font-semibold text-gray-700">Backlog</h3>
+            <h3 class="text-sm font-semibold text-gray-700">{{ list.name }}</h3>
             <Menu as="div" class="relative z-10">
               <MenuButton class="grid h-8 w-8 place-content-center rounded-md hover:bg-gray-300">
                 <DotsHorizontalIcon class="h-5 w-5" />
@@ -82,11 +82,7 @@
         </div>
 
         <div class="w-72">
-          <button
-            class="flex w-full items-center rounded-md bg-white/10 p-2 text-sm font-medium text-white hover:bg-white/20">
-            <PlusIcon class="mt-1 h-5 w-5" />
-            Add another list
-          </button>
+          <CreateBoardList :board="board" />
         </div>
       </div>
     </div>
@@ -97,6 +93,7 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { DotsHorizontalIcon, PencilIcon, PlusIcon } from '@heroicons/vue/solid';
 import BoardName from '~/Components/BoardName.vue';
+import CreateBoardList from '~/Components/CreateBoardList.vue';
 import { Board } from '~/types/models/board';
 
 defineProps<{ board: Board }>();
