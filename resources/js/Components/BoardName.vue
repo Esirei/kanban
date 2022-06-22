@@ -1,19 +1,19 @@
 <template>
-  <div class="flex flex-col items-start">
+  <div class="flex max-w-full flex-col items-start">
     <h1
       ref="heading"
       :class="{ 'absolute -left-[1000rem]': isEditing }"
-      class="cursor-pointer rounded-md border border-transparent px-3 py-1.5 text-2xl font-bold text-white hover:bg-white/20"
+      class="pre-wrap cursor-pointer break-all rounded-md border border-transparent px-3 py-1.5 text-2xl font-bold text-white hover:bg-white/20"
       @click="edit">
       {{ form.name || ' ' }}
     </h1>
-    <form v-show="isEditing" @submit.prevent="submitName" @focusout="submitName">
+    <form v-show="isEditing" class="w-full" @submit.prevent="submitName" @focusout="submitName">
       <input
         ref="input"
         v-model="form.name"
         type="text"
         placeholder="Board name"
-        class="rounded-md px-3 py-1.5 text-2xl font-bold placeholder:text-gray-400 focus:ring-2 focus:ring-purple-900" />
+        class="max-w-full rounded-md px-3 py-1.5 text-2xl font-bold placeholder:text-gray-400 focus:ring-2 focus:ring-purple-900" />
     </form>
   </div>
 </template>
