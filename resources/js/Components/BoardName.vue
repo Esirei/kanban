@@ -2,7 +2,7 @@
   <div class="relative -m-1 flex max-w-full flex-col items-start truncate p-1">
     <h1
       :class="{ invisible: isEditing }"
-      class="w-full cursor-pointer overflow-hidden text-ellipsis rounded-md border border-transparent px-3 py-1.5 text-2xl font-bold text-white hover:bg-white/20"
+      class="w-full cursor-pointer overflow-hidden text-ellipsis rounded-md border border-transparent px-3 py-1.5 text-xl font-bold text-white hover:bg-white/20"
       @click="edit">
       {{ form.name || ' ' }}
     </h1>
@@ -12,7 +12,7 @@
         v-model="form.name"
         type="text"
         placeholder="Board name"
-        class="absolute inset-1 max-w-full rounded-md px-3 py-1.5 text-2xl font-bold placeholder:text-gray-400 focus:ring-2 focus:ring-purple-900" />
+        class="absolute inset-1 max-w-full rounded-md px-3 py-1.5 text-xl font-bold placeholder:text-gray-400 focus:ring-2 focus:ring-purple-900" />
     </form>
   </div>
 </template>
