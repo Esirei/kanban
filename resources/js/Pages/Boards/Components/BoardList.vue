@@ -40,16 +40,7 @@
     <div class="flex flex-col overflow-hidden pb-3">
       <div ref="listRef" class="flex-1 overflow-auto px-3 scrollbar-border-gray-200">
         <ul class="space-y-3">
-          <li
-            v-for="card in list.cards"
-            :key="card.id"
-            class="group relative rounded-md border-b border-gray-300 bg-white p-3 shadow hover:bg-gray-50">
-            <a href="#" class="text-sm">{{ card.title }}</a>
-            <button
-              class="absolute top-1 right-1 hidden h-8 w-8 place-content-center rounded-md bg-gray-50 text-gray-600 hover:bg-gray-200 hover:text-black group-hover:grid">
-              <PencilIcon class="h-5 w-5" />
-            </button>
-          </li>
+          <CardItem v-for="card in list.cards" :key="card.id" :card="card" />
         </ul>
       </div>
 
@@ -62,10 +53,11 @@
 
 <script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
-import { DotsHorizontalIcon, PencilIcon } from '@heroicons/vue/solid';
+import { DotsHorizontalIcon } from '@heroicons/vue/solid';
 import { ref } from 'vue';
-import CreateCard from './CreateCard.vue';
 import { List } from '~/types/models/board';
+import CardItem from './CardItem.vue';
+import CreateCard from './CreateCard.vue';
 
 interface Props {
   list: List;
