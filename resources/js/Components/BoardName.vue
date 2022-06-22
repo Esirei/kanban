@@ -5,7 +5,7 @@
       :class="{ 'absolute -left-[1000rem]': isEditing }"
       class="cursor-pointer rounded-md border border-transparent px-3 py-1.5 text-2xl font-bold text-white hover:bg-white/20"
       @click="edit">
-      {{ form.name }}
+      {{ form.name || ' ' }}
     </h1>
     <form v-show="isEditing" @submit.prevent="submitName" @focusout="submitName">
       <input
@@ -47,6 +47,7 @@ const edit = async () => {
 
 const submitName = () => {
   isEditing.value = false;
+  if (!form.name) return form.reset();
   if (!form.isDirty) return;
   form.patch(route('boards.update', props.board), {
     onError: () => form.reset(),
