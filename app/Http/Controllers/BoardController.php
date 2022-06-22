@@ -31,7 +31,7 @@ class BoardController extends Controller
 
     public function show(Board $board)
     {
-        return inertia('Board');
+        return inertia('Board', compact('board'));
     }
 
     public function edit(Board $board)
@@ -40,6 +40,13 @@ class BoardController extends Controller
 
     public function update(Request $request, Board $board)
     {
+        $data = $request->validate([
+            'name' => 'required|max:255'
+        ]);
+
+        $board->update($data);
+
+        return back();
     }
 
     public function destroy(Board $board)

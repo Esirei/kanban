@@ -26,7 +26,7 @@ Route::get('/', function () {
 });
 
 Route::resource('boards', BoardController::class)
-    ->only('index', 'show', 'store')
+    ->except('destroy', 'create', 'edit')
     ->middleware(['auth', 'verified']);
 
 require __DIR__.'/auth.php';

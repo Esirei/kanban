@@ -1,7 +1,7 @@
 <template layout="Authenticated">
   <div class="flex h-full flex-col bg-purple-400">
     <div class="flex shrink-0 items-center justify-between p-4">
-      <h1 class="text-2xl font-bold text-white">Board title</h1>
+      <BoardName :board="board" />
       <div>
         <button
           class="inline-flex items-center rounded-md bg-white/10 px-3 py-2 text-sm font-medium text-white hover:bg-white/20">
@@ -93,9 +93,13 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue';
 import { DotsHorizontalIcon, PencilIcon, PlusIcon } from '@heroicons/vue/solid';
+import BoardName from '~/Components/BoardName.vue';
+import { Board } from '~/types/models/board';
+
+defineProps<{ board: Board }>();
 </script>
 
 <style scoped></style>
