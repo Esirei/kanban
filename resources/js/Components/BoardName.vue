@@ -47,9 +47,11 @@ const edit = async () => {
 
 const submitName = () => {
   isEditing.value = false;
+  if (!form.isDirty) return;
   form.patch(route('boards.update', props.board), {
     onError: () => form.reset(),
     preserveScroll: true,
+    preserveState: true,
   });
 };
 </script>
