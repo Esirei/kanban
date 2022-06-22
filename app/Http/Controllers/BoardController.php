@@ -31,7 +31,7 @@ class BoardController extends Controller
 
     public function show(Board $board)
     {
-        $board->load('lists');
+        $board->load('lists.cards');
         return inertia('Board', compact('board'));
     }
 

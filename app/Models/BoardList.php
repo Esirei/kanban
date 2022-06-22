@@ -27,4 +27,9 @@ class BoardList extends Model
             'user_id' // f-key of related table on joining(through) table
         );
     }
+
+    public function cards()
+    {
+        return $this->hasMany(Card::class);
+    }
 }
