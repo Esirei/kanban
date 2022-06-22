@@ -40,7 +40,7 @@
     <div class="flex flex-col overflow-hidden pb-3">
       <div ref="listRef" class="flex-1 overflow-auto px-3 scrollbar-border-gray-200">
         <ul class="space-y-3">
-          <CardItem v-for="card in list.cards" :key="card.id" :card="card" />
+          <CardItem v-for="card in list.cards" :key="`${card.id}-${card.title}`" :card="card" />
         </ul>
       </div>
 
