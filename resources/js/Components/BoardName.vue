@@ -1,8 +1,8 @@
 <template>
-  <div class="relative flex max-w-full flex-col items-start">
+  <div class="relative flex max-w-full flex-col items-start truncate">
     <h1
       :class="{ invisible: isEditing }"
-      class="w-full cursor-pointer overflow-hidden text-ellipsis whitespace-nowrap rounded-md border border-transparent px-3 py-1.5 text-2xl font-bold text-white hover:bg-white/20"
+      class="w-full cursor-pointer overflow-hidden text-ellipsis rounded-md border border-transparent px-3 py-1.5 text-2xl font-bold text-white hover:bg-white/20"
       @click="edit">
       {{ form.name || ' ' }}
     </h1>

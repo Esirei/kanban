@@ -1,6 +1,6 @@
 <template layout="Authenticated">
   <div class="flex h-full flex-col bg-purple-400">
-    <div class="flex shrink-0 items-center justify-between p-4">
+    <div class="flex shrink-0 items-center justify-between gap-4 p-4">
       <BoardName :board="board" />
       <div>
         <button
