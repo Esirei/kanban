@@ -1,9 +1,11 @@
 <template>
   <div class="flex h-screen flex-col">
     <nav class="flex shrink-0 justify-between border-b bg-white px-4 py-3">
-      <a :href="route('boards.index')" class="text-2xl font-black tracking-tight">kanboard</a>
+      <InertiaLink :href="route('boards.index')" class="text-2xl font-black tracking-tight">
+        kanboard
+      </InertiaLink>
       <div class="flex items-center">
-        <NavLink href="#">My boards</NavLink>
+        <NavLink :href="route('boards.index')">My boards</NavLink>
         <Menu as="div" class="relative z-10 ml-3">
           <MenuButton
             class="rounded-full focus:outline-none focus:ring-2 focus:ring-purple-400 focus:ring-offset-2">
